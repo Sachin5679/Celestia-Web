@@ -1,0 +1,25 @@
+@property --property-name {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #c0ffee;
+}
+
+@keyframes public__svg__logo__animation {
+  from {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes public__svg__logo__hidden__letter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
