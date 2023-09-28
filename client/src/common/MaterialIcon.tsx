@@ -1,4 +1,4 @@
-import Icon from "../interfaces/icons";
+import Icon from "../types/icons";
 
 interface MaterialIconProps {
   icon: Icon;

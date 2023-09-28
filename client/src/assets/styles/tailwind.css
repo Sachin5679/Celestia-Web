@@ -16,4 +16,12 @@
   .absolute-center {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
   }
+
+  .absolute-cover {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+
+  .p-page {
+    @apply px-[5vw];
+  }
 }

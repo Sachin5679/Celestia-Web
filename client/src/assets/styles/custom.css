@@ -1,4 +1,5 @@
 .logo-anim {
-  animation: var(--letter-speed) ease-out calc(var(--iter) * var(--delay-step))
-    public__svg__logo__animation;
+  animation: public__svg__logo__animation var(--letter-speed) ease-out
+      calc(var(--iter) * var(--delay-step)),
+    public__svg__logo__hidden__letter calc(var(--iter) * var(--delay-step));
 }
