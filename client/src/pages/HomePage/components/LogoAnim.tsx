@@ -70,6 +70,8 @@ export default function LogoAnim(props: LogoAnimProps) {
         {
           "--letter-speed": `${props.letterSpeed}ms`,
           "--delay-step": `${props.delayStep}ms`,
+          stroke: props.color,
+          color: props.color,
         } as React.CSSProperties
       }
     >

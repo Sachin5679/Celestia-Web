@@ -12,6 +12,14 @@
     url("/fonts/CelestialDecorative.ttf") format("truetype");
 }
 
+/* Celestial Clean fontface */
+@font-face {
+  font-family: "Celestial";
+  src: url("/fonts/CelestialClean.otf") format("otf"),
+    url("/fonts/CelestialClean.otf") format("opentype"),
+    url("/fonts/CelestialClean.ttf") format("truetype");
+}
+
 @keyframes public__svg__logo__animation {
   from {
     stroke-dasharray: 200;
