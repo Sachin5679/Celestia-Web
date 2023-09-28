@@ -4,6 +4,14 @@
   initial-value: #c0ffee;
 }
 
+/* Celestial Decorative fontface */
+@font-face {
+  font-family: "CelestialDecorative";
+  src: url("/fonts/CelestialDecorative.otf") format("otf"),
+    url("/fonts/CelestialDecorative.otf") format("opentype"),
+    url("/fonts/CelestialDecorative.ttf") format("truetype");
+}
+
 @keyframes public__svg__logo__animation {
   from {
     stroke-dasharray: 200;

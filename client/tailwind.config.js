@@ -12,7 +12,7 @@ export default {
         secondary: "",
         background: "#000000",
         foreground: "",
-        front: "",
+        front: "#ffffff",
         back: "",
       },
       borderRadius: {
@@ -24,9 +24,17 @@ export default {
       fontFamily: {
         poppins: '"Poppins", sans-serif',
         raleway: '"Raleway", sans-serif',
+        celestialDecorative: '"CelestialDecorative", sans-serif',
       },
       zIndex: {
         1: 1,
+      },
+      strokeWidth: {
+        0: "0px",
+        5: "5px",
+        10: "10px",
+        15: "15px",
+        20: "20px",
       },
     },
   },

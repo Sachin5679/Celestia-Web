@@ -1,0 +1,72 @@
+import React, { useState, useEffect, useRef } from "react";
+import { twMerge } from "tailwind-merge";
+
+export default function PersistentName() {
+  const [currentLetter, setCurrentLetter] = useState("C");
+  const [x, setX] = useState(`${-window.innerWidth / 2}px`);
+  const [letterWidth, setLetterWidth] = useState(100);
+  const [opacity, setOpacity] = useState(0);
+
+  const ref = useRef() as React.MutableRefObject<HTMLElement>;
+
+  const padLeft = 0.6;
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setCurrentLetter(
+        ["C", "C", "C", "EL", "EL", "E", "E", "ST", "ST", "I", "I", "A", "A"][
+          Math.floor(
+            (window.scrollY - window.innerHeight / 2) / window.innerHeight
+          )
+        ]
+      );
+      setLetterWidth(ref.current.clientWidth);
+
+      if (window.scrollY < window.innerHeight * 1.5) {
+        setX(`${-window.innerWidth}px`);
+      } else {
+        const tx =
+          letterWidth * padLeft -
+          letterWidth *
+            (1 + padLeft) *
+            Math.pow(
+              Math.abs(
+                1 -
+                  Math.sin(
+                    (window.innerHeight * 1.5 + Math.PI * window.scrollY) /
+                      window.innerHeight
+                  )
+              ),
+              2
+            );
+        setX(`${tx}px`);
+        setOpacity(
+          Math.sin(
+            (window.innerHeight * 1.5 + Math.PI * window.scrollY) /
+              window.innerHeight
+          )
+        );
+      }
+    });
+  }, []);
+
+  return (
+    <article>
+      <figure
+        ref={ref}
+        style={
+          {
+            "--x": x,
+            opacity: opacity > 0 ? opacity : 0,
+          } as React.CSSProperties
+        }
+        className={twMerge(
+          "font-celestialDecorative fixed top-1/2 -translate-y-1/2 translate-x-[var(--x)] text-[30vh]",
+          currentLetter === "L" && "drop-shadow-[0px_0px_10px_#ff44dd]"
+        )}
+      >
+        {currentLetter}
+      </figure>
+    </article>
+  );
+}
