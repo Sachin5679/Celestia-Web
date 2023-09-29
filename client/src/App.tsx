@@ -9,6 +9,7 @@ import Footer from "./common/Footer";
 import Navbar from "./common/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import { GlobalContextProvider } from "./contexts/globalContext";
+import Cursor from "./common/Cursor";
 
 export default function App() {
   const router = createBrowserRouter(
@@ -30,6 +31,7 @@ export default function App() {
 function Root() {
   return (
     <main className="relative">
+      {/* <Cursor /> */}
       <Navbar />
       <Outlet />
       <Footer />

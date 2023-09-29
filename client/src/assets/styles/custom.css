@@ -3,3 +3,26 @@
       calc(var(--iter) * var(--delay-step)),
     public__svg__logo__hidden__letter calc(var(--iter) * var(--delay-step));
 }
+
+:root {
+  --accent: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+.animated-text-gradient-blue {
+  background-image: linear-gradient(to bottom right, #5050ff, #00d5ff, #0088ff);
+  background-size: 200% 200%;
+  animation: animated-bg-gradient-blue 5000ms infinite;
+}

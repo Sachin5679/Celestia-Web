@@ -22,11 +22,17 @@ export default function Hero({
 
     setTimeout(() => {
       setRenderBody(true);
+      setAnimFlag(true);
     }, (6 + 1) * delayStep + letterSpeed);
   }, []);
 
   return (
-    <section className="h-screen flex justify-center items-center relative p-page">
+    <section
+      className={twMerge(
+        "h-screen flex justify-center items-center relative p-page",
+        !animFlag && "overflow-hidden"
+      )}
+    >
       <div className="relative z-1 w-5/6 h-full pointer-events-none mix-blend-difference">
         <LogoAnim
           delayStep={delayStep}
@@ -44,12 +50,35 @@ export default function Hero({
         <Spline scene="https://prod.spline.design/a2-CAxt6N0VsodLg/scene.splinecode" />
       </div>
 
-      <div className="absolute-cover pointer-events-none">
+      <div className="absolute-cover overflow-hidden pointer-events-none">
         <div
+          style={
+            {
+              opacity: Math.pow(bgOpacity, 10),
+              "--scale": 1 + (1 - Math.pow(bgOpacity, 10)) / 2,
+              "--blurBy": `${2 * (1 - Math.pow(bgOpacity, 10))}px`,
+            } as React.CSSProperties
+          }
           className={twMerge(
-            "absolute left-1/2 -translate-x-1/2 text-center text-back font-celestial font-bold"
+            "absolute left-1/2 -translate-x-1/2 text-center text-back font-celestial font-black duration-300 text-xl whitespace-nowrap scale-[var(--scale)] blur-[var(--blurBy)]",
+            animFlag ? "bottom-[10vh]" : "-bottom-[20vh]",
+            Math.pow(bgOpacity, 10) < 0.01 && "hidden"
           )}
-        ></div>
+        >
+          <h1>We are excited to announce, for the first time ever!</h1>
+        </div>
+      </div>
+      <div
+        className={twMerge(
+          "top-0 w-full h-full -z-10",
+          bgOpacity < 0.01 ? "absolute translate-y-full" : "fixed"
+        )}
+      >
+        <img
+          src="/images/psychedelic.webp"
+          alt="trip"
+          className="object-cover w-full h-full -z-10 hidden"
+        />
       </div>
     </section>
   );

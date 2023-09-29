@@ -89,3 +89,34 @@ export function getCoords(elem: HTMLElement) {
 
   return { top: Math.round(top), left: Math.round(left) };
 }
+
+export function mapValueToColor(
+  value: number,
+  ranges: number[],
+  colors: number[][]
+) {
+  value = Math.min(Math.max(value, ranges[0]), ranges[ranges.length - 1]);
+  let index = 0;
+  while (value > ranges[index + 1]) {
+    index++;
+  }
+
+  const rangeStart = ranges[index];
+  const rangeEnd = ranges[index + 1];
+  const colorStart = colors[index];
+  const colorEnd = colors[index + 1];
+
+  const t = (value - rangeStart) / (rangeEnd - rangeStart);
+
+  const r = Math.round(colorStart[0] + (colorEnd[0] - colorStart[0]) * t)
+    .toString(16)
+    .padStart(2, "0");
+  const g = Math.round(colorStart[1] + (colorEnd[1] - colorStart[1]) * t)
+    .toString(16)
+    .padStart(2, "0");
+  const b = Math.round(colorStart[2] + (colorEnd[2] - colorStart[2]) * t)
+    .toString(16)
+    .padStart(2, "0");
+
+  return `#${r}${g}${b}`;
+}

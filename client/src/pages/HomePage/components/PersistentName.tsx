@@ -51,18 +51,26 @@ export default function PersistentName() {
   }, []);
 
   return (
-    <article>
+    <article className="pointer-events-none">
       <figure
         ref={ref}
         style={
           {
             "--x": x,
             opacity: opacity > 0 ? opacity : 0,
+            filter:
+              (currentLetter === "C" &&
+                "drop-shadow(0px 0px 5px #ff00aa) drop-shadow(0px 0px 1px #fff)") ||
+              (currentLetter === "EL" &&
+                "drop-shadow(0px 0px 4px #ff44dd) drop-shadow(0px 0px 8px #0000ff) drop-shadow(0px 0px 1px #ffffff)") ||
+              (currentLetter === "E" && "drop-shadow(0px 0px 1px #ffffff)"),
           } as React.CSSProperties
         }
         className={twMerge(
           "font-celestialDecorative fixed top-1/2 -translate-y-1/2 translate-x-[var(--x)] text-[30vh]",
-          currentLetter === "L" && "drop-shadow-[0px_0px_10px_#ff44dd]"
+          currentLetter === "E" &&
+            "font-thin bg-clip-text text-transparent animated-text-gradient-blue",
+          currentLetter === "ST" && "drop-shadow-[0px_0px_10px_#ff44dd]"
         )}
       >
         {currentLetter}
