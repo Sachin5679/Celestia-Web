@@ -25,7 +25,7 @@ export default function Csect() {
 
   return (
     <section ref={sectRef} className={twMerge("h-screen")}>
-      <Spline scene="https://prod.spline.design/Y67p3m0ljbnXao1Q/scene.splinecode" />
+      {/* <Spline scene="https://prod.spline.design/Y67p3m0ljbnXao1Q/scene.splinecode" /> */}
     </section>
   );
 }

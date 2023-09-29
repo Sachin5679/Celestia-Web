@@ -37,6 +37,10 @@ export default {
         15: "15px",
         20: "20px",
       },
+      backgroundSize: {
+        2: "200% 200%",
+        5: "500% 500%",
+      },
     },
   },
   plugins: [],
