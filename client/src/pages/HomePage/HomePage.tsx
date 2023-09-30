@@ -8,6 +8,7 @@ import { mapValueToColor } from "../../utils";
 import Csect from "./components/sections/Csect";
 import TicketButton from "./components/TicketButton";
 import TicketBooking from "./components/TicketBooking";
+import Isect from "./components/sections/Isect";
 
 export default function HomePage() {
   const [renderBody, setRenderBody] = useState(false);
@@ -17,7 +18,7 @@ export default function HomePage() {
     const accentMapValuesFrom: number[] = [0];
     const accentMapValuesTo: number[][] = [
       [255, 255, 255],
-      [255, 0, 255],
+      [255, 130, 20], //C
       [50, 50, 50],
       [0, 0, 255],
       [255, 255, 0],
@@ -49,7 +50,7 @@ export default function HomePage() {
 
       {renderBody && (
         <div className="overflow-hidden">
-          <section className="h-screen"></section>
+          <div className="h-screen" />
           <Csect />
           <div className="h-screen" />
           <ELsect />
@@ -58,7 +59,7 @@ export default function HomePage() {
           <div className="h-screen" />
           <STsect />
           <div className="h-screen" />
-          <div className="h-screen bg-black" />
+          <Isect />
           <div className="h-screen bg-purple-500" />
           <div className="h-screen bg-purple-500" />
           <div className="h-screen bg-black" />

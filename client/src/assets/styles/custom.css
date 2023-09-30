@@ -4,6 +4,10 @@
     public__svg__logo__hidden__letter calc(var(--iter) * var(--delay-step));
 }
 
+.rainbow-anim {
+  animation: rainbow__color__cycle 3000ms infinite;
+}
+
 :root {
   --accent: #fff;
 }
@@ -25,4 +29,59 @@
   background-image: linear-gradient(to bottom right, #5050ff, #00d5ff, #0088ff);
   background-size: 200% 200%;
   animation: animated-bg-gradient-blue 5000ms infinite;
+}
+
+/* ---------- Fog ---------- */
+.fogwrapper {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  -webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+  filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+}
+#foglayer_01,
+#foglayer_02,
+#foglayer_03 {
+  height: 100%;
+  position: absolute;
+  width: 200%;
+}
+#foglayer_01 .image01,
+#foglayer_01 .image02,
+#foglayer_02 .image01,
+#foglayer_02 .image02,
+#foglayer_03 .image01,
+#foglayer_03 .image02 {
+  float: left;
+  height: 100%;
+  width: 50%;
+}
+#foglayer_01 {
+  -webkit-animation: foglayer_01_opacity 10s linear infinite,
+    foglayer_moveme 15s linear infinite;
+  -moz-animation: foglayer_01_opacity 10s linear infinite,
+    foglayer_moveme 15s linear infinite;
+  animation: foglayer_01_opacity 10s linear infinite,
+    foglayer_moveme 15s linear infinite;
+}
+#foglayer_02,
+#foglayer_03 {
+  -webkit-animation: foglayer_02_opacity 21s linear infinite,
+    foglayer_moveme 13s linear infinite;
+  -moz-animation: foglayer_02_opacity 21s linear infinite,
+    foglayer_moveme 13s linear infinite;
+  animation: foglayer_02_opacity 21s linear infinite,
+    foglayer_moveme 13s linear infinite;
+}
+
+#foglayer_01 .image01,
+#foglayer_01 .image02 {
+  background: url("/images/fog1.png") center center/cover no-repeat transparent;
+}
+#foglayer_02 .image01,
+#foglayer_02 .image02,
+#foglayer_03 .image01,
+#foglayer_03 .image02 {
+  background: url("/images/fog2.png") center center/cover no-repeat transparent;
 }

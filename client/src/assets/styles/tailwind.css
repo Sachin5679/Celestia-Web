@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply bg-background text-front font-poppins scroll-smooth;
+    @apply bg-background text-front font-poppins scroll-smooth selection:bg-[var(--accent)] selection:text-white;
   }
 
   body {

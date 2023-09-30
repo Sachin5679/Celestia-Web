@@ -1,12 +1,25 @@
 import { useState, useEffect, useRef } from "react";
-import Spline from "@splinetool/react-spline";
-import {
-  clampValue,
-  getCoords,
-  linearMap,
-  mapValueToColor,
-} from "../../../../utils";
+import { clampValue, linearMap } from "../../../../utils";
 import useCoords from "../../../../hooks/useCoords";
+import MaterialIcon from "../../../../common/MaterialIcon";
+
+const content = [
+  {
+    icon: "genres",
+    content:
+      "laksdnj andk akd ak dakd ka da dsgkav dkasdlad as dhalh dlasj dbjasflgv lgja jal asgfa f.scl aslja dadad askjdb la bdlah dla dlj adjv asdv alvd lav la d;aoi sdhui ihabd[aobudiavdsb na[dj aoubdl adkhba sd hahba dabh nnbh nabhbn djdbdjbnd nvnv ncsf fdn dndndmnsfdfdndnndb   fdfdewsfd",
+  },
+  {
+    icon: "noise_aware",
+    content:
+      "laksdnj andk akd ak dakd ka da dsgkav dkasdlad as dhalh dlasj dbjasflgv lgja jal asgfa f.scl aslja dadad",
+  },
+  {
+    icon: "headphones",
+    content:
+      "laksdnj andk akd ak dakd ka da dsgkav dkasdlad as dhalh dlasj dbjasflgv lgja jal asgfa f.scl aslja dadad",
+  },
+];
 
 export default function ELsect() {
   const [conf, setConf] = useState({
@@ -89,6 +102,24 @@ export default function ELsect() {
           <div className="absolute-cover duration-inherit group-hover:translate-y-1 bg-pink-500 -z-1" />
           <div className="absolute-cover duration-inherit group-hover:translate-y-2 bg-black -z-1" />
         </h1>
+      </div>
+
+      <div className="absolute top-1/2 left-0 w-full h-1/2 flex flex-col text-5xl group">
+        {content.map((item, key) => (
+          <div
+            key={key}
+            className="absolute duration-500 text-inherit flex w-1/3 h-1/2 left-[calc(100%_-_1.3em)] peer peer-hover:translate-x-full hover:-translate-x-[calc(100%_-_2em)]"
+            style={{ top: key * 83 }}
+          >
+            <MaterialIcon
+              icon={item.icon}
+              className="text-4xl border border-[var(--accent)] bg-black h-max p-3 translate-x-1 border-r-transparent"
+            />
+            <div className="border border-[var(--accent)] max-w-[50vw] bg-black px-8 py-5">
+              <p className="text-sm">{item.content}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

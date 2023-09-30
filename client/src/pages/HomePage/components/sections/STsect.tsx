@@ -30,7 +30,7 @@ export default function Lsect() {
       <img
         src="/images/neon-moon-cat.jpeg"
         alt="bg neon moon"
-        className="relative -translate-y-[var(--scroll)] -z-10"
+        className="relative -translate-y-[var(--scroll)] -z-10 w-full"
         style={{ "--scroll": imageScroll } as React.CSSProperties}
       />
     </section>

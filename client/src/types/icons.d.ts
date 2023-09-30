@@ -1,4 +1,5 @@
 type Icon =
+  | string
   | "10k"
   | "10mp"
   | "11mp"
