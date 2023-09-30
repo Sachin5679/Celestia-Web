@@ -29,6 +29,7 @@ export default function Login(props: {
         type="text"
         className="w-1/2 mobile:w-full border bg-transparent bg-blue-200 bg-opacity-10 rounded-md px-5 py-1 my-5 text-lg"
         ref={tokenRef}
+        autoFocus
         placeholder="Key"
       />
       <button
