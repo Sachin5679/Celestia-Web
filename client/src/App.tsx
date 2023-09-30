@@ -31,12 +31,6 @@ export default function App() {
 }
 
 function Root() {
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      location.reload();
-    });
-  }, []);
-
   return (
     <main className="relative">
       {/* <Cursor /> */}
