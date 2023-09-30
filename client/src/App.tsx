@@ -5,6 +5,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { useEffect } from "react";
 import Footer from "./common/Footer";
 import Navbar from "./common/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
@@ -30,6 +31,12 @@ export default function App() {
 }
 
 function Root() {
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      location.reload();
+    });
+  }, []);
+
   return (
     <main className="relative">
       {/* <Cursor /> */}

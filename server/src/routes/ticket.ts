@@ -36,4 +36,21 @@ router.get("/:id", authorisedOnly, async (req, res) => {
   return res.status(200).send(ticket);
 });
 
+router.put("/:id/check", authorisedOnly, async (req, res) => {
+  if (!req.params.id) return res.sendStatus(400);
+
+  const exists = await Attendant.findOne({ id: req.params.id });
+
+  if (!exists) return res.sendStatus(400);
+
+  await Attendant.findOneAndUpdate(
+    { id: req.params.id },
+    { $set: { checked: true } }
+  );
+
+  const newA = await Attendant.findOne({ id: req.params.id });
+
+  return res.status(200).send(newA);
+});
+
 export default router;

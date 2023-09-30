@@ -81,6 +81,30 @@ const admin = {
 
     return response.data;
   },
+
+  async checkTicket(ticketId: string) {
+    const response = await client.put<Attendant>(
+      `${serverUrl}/ticket/${ticketId}/check`
+    );
+
+    return response.data;
+  },
+
+  async getActivitiesList() {
+    const response = await client.get<{ activities: string[] }>(
+      `${serverUrl}/activity/list`
+    );
+
+    return response.data;
+  },
+
+  async activityCountUp(ticketId: string, activityType: string) {
+    const response = await client.put<Attendant>(
+      `${serverUrl}/activity/count/${activityType}/up?id=${ticketId}`
+    );
+
+    return response.data;
+  },
 };
 
 export default admin;
