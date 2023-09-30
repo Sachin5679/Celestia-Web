@@ -10,7 +10,7 @@ const placeAt = [
 ] as const; //x,y,w,h
 
 export default function TicketGenerator(props: { id: string; mobile: string }) {
-  const link = `localhost:5173/admin?id=${props.id}`;
+  const link = `https://${window.location.pathname}/admin?id=${props.id}`;
   const [editedImageURL, setEditedImageURL] = useState<string | null>(null);
 
   const canvasRef = useRef() as React.MutableRefObject<HTMLCanvasElement>;
