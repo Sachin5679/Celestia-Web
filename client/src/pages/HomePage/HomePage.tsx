@@ -6,16 +6,19 @@ import ELsect from "./components/sections/ELsect";
 import Esect from "./components/sections/Esect";
 import { mapValueToColor } from "../../utils";
 import Csect from "./components/sections/Csect";
+import TicketButton from "./components/TicketButton";
+import TicketBooking from "./components/TicketBooking";
 
 export default function HomePage() {
   const [renderBody, setRenderBody] = useState(false);
+  const [showTicketing, setShowTicketing] = useState(false);
 
   useEffect(() => {
     const accentMapValuesFrom: number[] = [0];
     const accentMapValuesTo: number[][] = [
       [255, 255, 255],
       [255, 0, 255],
-      [0, 255, 0],
+      [50, 50, 50],
       [0, 0, 255],
       [255, 255, 0],
       [0, 0, 0],
@@ -33,6 +36,8 @@ export default function HomePage() {
         "--accent",
         mapValueToColor(window.scrollY, accentMapValuesFrom, accentMapValuesTo)
       );
+      if (!showTicketing && window.scrollY > window.innerHeight * (2 / 3))
+        setShowTicketing(true);
     });
   }, []);
 
@@ -40,8 +45,10 @@ export default function HomePage() {
     <>
       <PersistentName />
       <Hero setRenderBody={setRenderBody} />
+      {showTicketing && <TicketButton />}
+
       {renderBody && (
-        <>
+        <div className="overflow-hidden">
           <section className="h-screen"></section>
           <Csect />
           <div className="h-screen" />
@@ -54,7 +61,9 @@ export default function HomePage() {
           <div className="h-screen bg-black" />
           <div className="h-screen bg-purple-500" />
           <div className="h-screen bg-purple-500" />
-        </>
+          <div className="h-screen bg-black" />
+          {showTicketing && <TicketBooking />}
+        </div>
       )}
     </>
   );

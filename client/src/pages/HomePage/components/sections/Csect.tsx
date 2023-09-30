@@ -24,8 +24,14 @@ export default function Csect() {
   }, [initialPos]);
 
   return (
-    <section ref={sectRef} className={twMerge("h-screen")}>
-      {/* <Spline scene="https://prod.spline.design/Y67p3m0ljbnXao1Q/scene.splinecode" /> */}
+    <section ref={sectRef} className={twMerge("h-screen overflow-hidden")}>
+      <video
+        src="/videos/satan.webm"
+        className="scale-125"
+        autoPlay
+        muted
+        loop
+      />
     </section>
   );
 }

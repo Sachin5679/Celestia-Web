@@ -41,6 +41,9 @@ export default {
         2: "200% 200%",
         5: "500% 500%",
       },
+      content: {
+        visible: '" "',
+      },
     },
   },
   plugins: [],

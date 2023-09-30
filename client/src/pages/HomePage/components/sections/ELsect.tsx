@@ -6,67 +6,90 @@ import {
   linearMap,
   mapValueToColor,
 } from "../../../../utils";
+import useCoords from "../../../../hooks/useCoords";
 
 export default function ELsect() {
-  const [initialPos, setInitialPos] = useState({ top: 0, left: 0 });
-  const [offset, setOffset] = useState(0);
-  const [conf, setConf] = useState({ bgOpacity: 1, scale: 1, hueRotate: 0 });
+  const [conf, setConf] = useState({
+    bgOpacity: 1,
+    scale: 1,
+    hueRotate: 0,
+    bgScale: 1,
+  });
 
   const sectRef = useRef() as React.MutableRefObject<HTMLElement>;
+  const initialPos = useCoords(sectRef);
 
   useEffect(() => {
-    setInitialPos(getCoords(sectRef.current));
-    window.addEventListener("scroll", () => {
-      setOffset((window.scrollY - initialPos.top) / window.innerHeight);
-    });
-
-    sectRef.current.addEventListener("mousemove", (event) => {
-      // const t = window.innerWidth / 6;
-      // const newColor = mapValueToColor(
-      //   event.clientX,
-      //   [0, t, t * 2, t * 3, t * 4, t * 5, t * 6],
-      //   [
-      //     [148, 0, 211],
-      //     [75, 0, 130],
-      //     [0, 0, 255],
-      //     [0, 255, 0],
-      //     [255, 255, 0],
-      //     [255, 165, 0],
-      //     [255, 0, 0],
-      //   ]
-      // );
-      setConf((p) => {
-        return {
-          ...p,
-          hueRotate: linearMap(
-            event.clientX,
-            { from: 0, to: window.innerWidth },
-            { from: 0, to: 180 }
-          ),
-        };
+    initialPos &&
+      window.addEventListener("scroll", () => {
+        setConf((p) => {
+          return {
+            ...p,
+            bgScale:
+              1 +
+              clampValue(
+                Math.pow(
+                  Math.abs(
+                    (window.scrollY - initialPos.top) / window.innerHeight
+                  ),
+                  2
+                ),
+                { min: 0, max: 1 }
+              ),
+          };
+        });
       });
-    });
-  }, []);
+    initialPos &&
+      sectRef.current.addEventListener("mousemove", (event) => {
+        setConf((p) => {
+          return {
+            ...p,
+            hueRotate: linearMap(
+              event.clientX,
+              { from: 0, to: window.innerWidth },
+              { from: 0, to: 720 }
+            ),
+          };
+        });
+      });
+  }, [initialPos]);
 
   return (
-    <section
-      className="h-screen relative"
-      ref={sectRef}
-      style={{
-        opacity:
-          1 - clampValue(Math.pow(Math.abs(offset), 3), { min: 0, max: 1 }),
-      }}
-    >
+    <section className="h-screen relative overflow-hidden" ref={sectRef}>
       <video
         src="/videos/concert.webm"
-        className="absolute-cover relative object-cover -z-10"
-        style={{
-          filter: `grayscale(100%) sepia(100%) hue-rotate(${conf.hueRotate}deg)`,
-        }}
+        className="absolute w-full h-full object-cover -z-10 scale-[var(--scaler)]"
+        style={
+          {
+            filter: `grayscale(100%) sepia(100%) hue-rotate(${conf.hueRotate}deg)`,
+            "--scaler": conf.bgScale,
+          } as React.CSSProperties
+        }
         autoPlay
         muted
         loop
       />
+      <div className="relative z-20 flex flex-col items-center my-20 gap-y-5">
+        <h1
+          className="cursor-default group w-2/3 py-8 self-end px-16 duration-500 [clip-path:polygon(5%_0%,100%_0%,100%_100%,0%_100%)] hover:[clip-path:polygon(0%_0%,100%_0%,100%_100%,5%_100%)]
+        relative z-10"
+        >
+          <span
+            className="relative text-slate-400 font-medium text-2xl bg-black group"
+            style={{
+              filter: `grayscale(100%) sepia(100%) hue-rotate(${conf.hueRotate}deg)`,
+            }}
+          >
+            Electrifying EDM
+            <span className="absolute bottom-0 left-0 whitespace-nowrap text-xs -z-1 opacity-0 duration-700 group-hover:left-full group-hover:translate-x-4 group-hover:opacity-100">
+              move your mouse to feel the lights of the concert
+            </span>
+          </span>
+          <div className="absolute-cover duration-inherit group-hover:-translate-y-2 bg-blue-500 -z-1" />
+          <div className="absolute-cover duration-inherit group-hover:translate-y-1 bg-pink-500 -z-1" />
+          <div className="absolute-cover duration-inherit group-hover:translate-y-2 bg-black -z-1" />
+        </h1>
+      </div>
     </section>
   );
 }
