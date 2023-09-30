@@ -1,10 +1,9 @@
 import express from "express";
 import ticketRouter from "./ticket";
-import authRouter from "./auth";
+import { authorisedOnly } from "../middleware/auth";
 const router = express.Router();
 
 router.use("/ticket", ticketRouter);
-router.use("/auth", authRouter);
 
 router.get("/", (req, res) => {
   res.send(
@@ -12,6 +11,10 @@ router.get("/", (req, res) => {
       req.protocol + "://" + req.get("host") + req.originalUrl
     }`
   );
+});
+
+router.get("/auth", authorisedOnly, (req, res) => {
+  return res.status(200).send({ authorised: true });
 });
 
 export default router;

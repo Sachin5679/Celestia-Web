@@ -1,3 +1,5 @@
+import { adminSessionTimeout } from "./config";
+
 export function generateRandomString(length: number, seed?: string) {
   let result = "";
   const characters =
@@ -119,4 +121,29 @@ export function mapValueToColor(
     .padStart(2, "0");
 
   return `#${r}${g}${b}`;
+}
+
+export function saveTokenToLocalStorage(token: string) {
+  localStorage.setItem(
+    "celestia-admin_KEY",
+    JSON.stringify({
+      token: token,
+      ends: Number(new Date().getTime()) + adminSessionTimeout,
+    })
+  );
+}
+
+export function getTokenFromLocalStorage() {
+  const localKey = localStorage.getItem("celestia-admin_KEY");
+  if (!localKey) return false;
+  const data = JSON.parse(localKey);
+  if (data.ends < new Date().getTime()) {
+    clearTokenFromLocalStorage();
+    return "";
+  }
+  return data.token;
+}
+
+export function clearTokenFromLocalStorage() {
+  localStorage.removeItem("celestia-admin_KEY");
 }

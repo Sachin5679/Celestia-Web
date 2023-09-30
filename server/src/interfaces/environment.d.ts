@@ -6,8 +6,6 @@ declare global {
       PORT?: number;
       DB_URI: string;
       KEY: string;
-      ADMIN_USERNAME: string;
-      ADMIN_PASSWORD: string;
       ADMIN_KEY: string;
     }
   }
