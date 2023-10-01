@@ -6,6 +6,7 @@ import ELsect from "./components/sections/ELsect";
 import Esect from "./components/sections/Esect";
 import { mapValueToColor } from "../../utils";
 import Csect from "./components/sections/Csect";
+import BrochureButton from "./components/BrochureButton";
 import TicketButton from "./components/TicketButton";
 import TicketBooking from "./components/TicketBooking";
 import Isect from "./components/sections/Isect";
@@ -44,6 +45,8 @@ export default function HomePage() {
       <PersistentName />
       <Hero />
       <TicketButton />
+      <BrochureButton />
+      
 
       <div className="overflow-hidden">
         <div className="h-screen" />
