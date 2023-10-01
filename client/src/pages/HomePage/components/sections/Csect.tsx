@@ -67,15 +67,15 @@ export default function Csect() {
 
       <div className="flex ml-[33vw] flex-col h-screen gap-y-3 group mt-20">
         <div className="bg-black px-10 py-5 rounded-2xl w-max bg-opacity-80">
-          <h1 className="text-7xl">IT'S HAPPENING AND</h1>
-          <h2 className="text-5xl">IT'S GONNA BE</h2>
-          <h3 className="text-9xl peer rainbow-anim text-red-500 cursor-default">
+          <h1 className="lg:text-7xl text-3xl">IT'S HAPPENING AND</h1>
+          <h2 className="lg:text-5xl text-2xl">IT'S GONNA BE</h2>
+          <h3 className="lg:text-9xl text-5xl peer rainbow-anim text-red-500 cursor-default">
             CRAZIER{" "}
             <span className="text-xs italic animate-pulse">
               hover for a trip
             </span>
           </h3>
-          <h4 className="text-3xl">
+          <h4 className="lg:text-3xl text-2xl">
             THAN YOU IMAGINED{" "}
             <span className="animate-pulse text-lg tracking-widest">
               ......
@@ -117,12 +117,12 @@ export default function Csect() {
             </div>
           </div>
         </div>
-        <div className="mt-32 bg-black bg-opacity-80 w-1/2 self-center px-10 py-5 rounded-xl">
+        <div className="mt-32 bg-black bg-opacity-80 lg:w-1/2 self-center px-10 py-5 rounded-xl">
           At celestia we believe in crazy crzy Lorem ipsum dolor sit amet
           consectetur adipisicing elit. Voluptates obcaecati expedita nisi alias
           dolor repudiandae.
         </div>
-        <div className="mt-32 bg-black bg-opacity-80 w-1/2 self-start px-10 py-5 rounded-xl">
+        <div className="mt-32 bg-black bg-opacity-80 lg:w-1/2 self-start px-10 py-5 rounded-xl">
           At celestia we believe in crazy crzy Lorem ipsum dolor sit amet
           consectetur adipisicing elit. Voluptates obcaecati expedita nisi alias
           dolor repudiandae.
