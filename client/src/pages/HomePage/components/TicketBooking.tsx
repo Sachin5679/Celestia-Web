@@ -66,8 +66,8 @@ export default function TicketBooking() {
           />
         </div>
 
-        <div className="flex flex-col relative z-10 w-full items-center pt-10">
-          <h1 className="font-celestial text-5xl font-black text-black tracking-wide">
+        <div className="flex flex-col relative z-10 w-full items-center lg:pt-10 pt-20">
+          <h1 className="font-celestial text-5xl font-black text-black tracking-wide text-center">
             GRAB YOUR TICKETS
           </h1>
           <div className="flex justify-center mt-16 text-xl font-light group duration-500">
@@ -96,7 +96,7 @@ export default function TicketBooking() {
 
       {show === "internal" && (
         <div className="fixed top-0 left-0 z-[999] w-full h-full flex justify-center items-center bg-black bg-opacity-70 backdrop-blur-sm">
-          <div className="bg-white lg:w-[40vw] py-10 px-20 rounded-xl drop-shadow-lg ">
+          <div className="bg-white lg:w-[40vw] py-10 px-20 rounded-xl drop-shadow-lg">
             <h1 className="mb-10 font-celestialDecorative text-slate-700 text-center text-5xl rainbow-anim">
               CELESTIA
             </h1>
