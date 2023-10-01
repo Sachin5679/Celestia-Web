@@ -1,11 +1,14 @@
 import express from "express";
 import ticketRouter from "./ticket";
 import activityRouter from "./activity";
+import emailRouter from "./email";
+
 import { authorisedOnly } from "../middleware/auth";
 const router = express.Router();
 
 router.use("/ticket", ticketRouter);
 router.use("/activity", activityRouter);
+router.use("/email", emailRouter);
 
 router.get("/", (req, res) => {
   res.send(

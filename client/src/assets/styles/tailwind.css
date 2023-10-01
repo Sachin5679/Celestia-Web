@@ -25,3 +25,6 @@
     @apply px-[5vw];
   }
 }
+
+@layer components {
+}
