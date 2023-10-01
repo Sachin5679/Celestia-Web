@@ -5,6 +5,7 @@ import { clampValue } from "../../../utils";
 
 export default function TicketButton() {
   const [expansion, setExpansion] = useState(0);
+  const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -15,6 +16,24 @@ export default function TicketButton() {
             max: 1,
           })
       );
+
+      if (window.scrollY > document.body.offsetHeight - window.innerHeight * 2)
+        setOpacity(0);
+      else
+        setOpacity(
+          Math.abs(
+            1 +
+              clampValue(
+                (window.scrollY -
+                  document.body.offsetHeight +
+                  window.innerHeight) /
+                  window.innerHeight,
+                {
+                  min: 0,
+                }
+              )
+          )
+        );
     });
   }, []);
 
@@ -24,6 +43,7 @@ export default function TicketButton() {
       style={{
         paddingRight: `${expansion * 128}px`,
         paddingLeft: `${expansion * 16}px`,
+        opacity: `${Math.min(1, opacity)}`,
       }}
       onMouseEnter={() => {
         setExpansion(1);

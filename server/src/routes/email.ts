@@ -4,12 +4,15 @@ import Mail from "nodemailer/lib/mailer";
 import fs from "fs";
 import path from "path";
 
-function readHTMLFile(path: string, callback: Function) {
+function readHTMLFile(
+  path: string,
+  callback?: (arg0: Error | null, arg1: string | null) => void
+) {
   fs.readFile(path, { encoding: "utf-8" }, function (err, html) {
     if (err) {
-      callback(err);
+      callback && callback(err, "");
     } else {
-      callback(null, html);
+      callback && callback(null, html);
     }
   });
 }
@@ -24,7 +27,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mail = fs.readFileSync(path.join(__dirname, "../assets/mail.html"));
+let mail = "mailto";
+
+readHTMLFile(path.join(__dirname, "../assets/mail.html"), (err, html) => {
+  if (err) console.error(err);
+  if (html) mail = html;
+});
 
 router.post("/send-form", async (req, res) => {
   const { email } = req.query;
@@ -35,7 +43,9 @@ router.post("/send-form", async (req, res) => {
     from: "celestia.iiitm@gmail.com",
     to: email.toString(),
     subject: "Celestia | Get your tickets",
-    text: mail,
+    text: "For clients with plaintext support only",
+    html: mail,
+    amp: mail,
   };
 
   await transporter.sendMail(mailOptions).catch((err) => console.error(err));
