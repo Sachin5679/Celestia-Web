@@ -5,7 +5,7 @@ import useCoords from "../../../hooks/useCoords";
 const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 export default function TicketBooking() {
-  const [bgOpacity, setBgOpacity] = useState(0);
+  const [bgOpacity, setBgOpacity] = useState(-2);
   const sectRef = useRef() as React.MutableRefObject<HTMLElement>;
 
   const initialPos = useCoords(sectRef);
