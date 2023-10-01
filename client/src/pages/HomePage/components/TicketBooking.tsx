@@ -96,13 +96,13 @@ export default function TicketBooking() {
 
       {show === "internal" && (
         <div className="fixed top-0 left-0 z-[999] w-full h-full flex justify-center items-center bg-black bg-opacity-70 backdrop-blur-sm">
-          <div className="bg-white w-[40vw] py-10 px-20 rounded-xl drop-shadow-lg">
+          <div className="bg-white lg:w-[40vw] py-10 px-20 rounded-xl drop-shadow-lg ">
             <h1 className="mb-10 font-celestialDecorative text-slate-700 text-center text-5xl rainbow-anim">
               CELESTIA
             </h1>
             <input
               type="text"
-              placeholder="Enter your institude email"
+              placeholder="Enter your institute email"
               className="w-full rounded-full border border-black px-2 py-1 text-lg text-black"
               ref={emailRef}
             />
