@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import useCoords from "../../../hooks/useCoords";
 import axios from "axios";
 import { serverUrl } from "../../../config";
+import MaterialIcon from "../../../common/MaterialIcon";
 
 function verifyInsstituteEmail(rollNumber: string): boolean {
   const rollNumberPattern =
@@ -79,10 +80,16 @@ export default function TicketBooking() {
 
             <button
               className="duration-inherit bg-black px-8 py-3 rounded-r-full border-l border-pink-500 hover:bg-[#220022] hover:px-20 hover:py-5 hover:bg-opacity-90 hover:backdrop-blur"
-              onClick={() => setShow("external")}
+              onClick={() =>
+                window.open("https://forms.gle/TcvUZ9umXENZBHhN7", "CEESLSTIA")
+              }
             >
               Other College
             </button>
+          </div>
+          <div className="bg-black mt-10 px-16 py-5 flex items-center gap-x-2 rounded-full">
+            <MaterialIcon icon="book" />
+            Download Brochure
           </div>
         </div>
       </section>
