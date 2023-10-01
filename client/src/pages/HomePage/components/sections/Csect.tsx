@@ -90,7 +90,7 @@ export default function Csect() {
 
           <div className="fixed w-full h-full top-0 left-0 z-[999] mix-blend-exclusion bg-blue-500 opacity-0 duration-1000 peer-hover:opacity-100 pointer-events-none rainbow-anim" />
 
-          <div className="fixed w-full h-full top-0 left-0 z-[1000] opacity-0 peer-duration-1000 duration-[20000ms] peer-hover:opacity-100 pointer-events-none brightness-200 overflow-hidden">
+          <div className="fixed w-full h-full top-0 left-0 z-[1000] opacity-0 peer-hover:duration-1000 duration-[20000ms] peer-hover:opacity-100 pointer-events-none brightness-200 overflow-hidden">
             <div className="fog" id="foglayer_01">
               <div className="image01"></div>
               <div className="image02"></div>

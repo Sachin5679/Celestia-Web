@@ -62,7 +62,7 @@ export default function FluidBG(props: { config?: Config }) {
         );
       }
 
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      gl.clearColor(0.0, 0.0, 0.0, 0.0);
 
       const halfFloatTexType = isWebGL2
         ? gl.HALF_FLOAT

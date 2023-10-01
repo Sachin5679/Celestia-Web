@@ -9,6 +9,7 @@ import Csect from "./components/sections/Csect";
 import TicketButton from "./components/TicketButton";
 import TicketBooking from "./components/TicketBooking";
 import Isect from "./components/sections/Isect";
+import Asect from "./components/sections/Asect";
 
 export default function HomePage() {
   const [renderBody, setRenderBody] = useState(false);
@@ -21,9 +22,10 @@ export default function HomePage() {
       [255, 130, 20], //C
       [50, 50, 50],
       [0, 0, 255],
-      [255, 255, 0],
+      [255, 0, 255],
+      [255, 255, 255],
       [0, 0, 0],
-      [0, 0, 0],
+      [255, 255, 255],
     ];
 
     for (let i = 0; i < 7; i++) {
@@ -60,8 +62,8 @@ export default function HomePage() {
           <STsect />
           <div className="h-screen" />
           <Isect />
-          <div className="h-screen bg-purple-500" />
-          <div className="h-screen bg-purple-500" />
+          <div className="h-screen" />
+          <Asect />
           <div className="h-screen bg-black" />
           {showTicketing && <TicketBooking />}
         </div>

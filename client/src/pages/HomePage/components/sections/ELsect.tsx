@@ -113,7 +113,12 @@ export default function ELsect() {
           >
             <MaterialIcon
               icon={item.icon}
-              className="text-4xl border border-[var(--accent)] bg-black h-max p-3 translate-x-1 border-r-transparent"
+              style={{
+                filter: `grayscale(100%) sepia(100%) hue-rotate(${
+                  360 - conf.hueRotate
+                }deg)`,
+              }}
+              className="text-4xl border border-[var(--accent)] bg-black h-max p-3 translate-x-1 border-r-transparent text-slate-500"
             />
             <div className="border border-[var(--accent)] max-w-[50vw] bg-black px-8 py-5">
               <p className="text-sm">{item.content}</p>
