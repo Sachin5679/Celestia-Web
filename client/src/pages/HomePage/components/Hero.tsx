@@ -7,11 +7,6 @@ const delayStep = 500;
 const letterSpeed = 1500;
 
 export default function Hero() {
-// {
-//   setRenderBody,
-// }: {
-//   setRenderBody: React.Dispatch<React.SetStateAction<boolean>>;
-// }
   const [bgOpacity, setBgOpacity] = useState(1);
   const [animFlag, setAnimFlag] = useState(false);
 
@@ -21,10 +16,9 @@ export default function Hero() {
       setBgOpacity(r > 1 ? 0 : 1 - r);
     });
 
-    // setTimeout(() => {
-    //   setRenderBody(true);
-    //   setAnimFlag(true);
-    // }, (6 + 1) * delayStep + letterSpeed);
+    setTimeout(() => {
+      setAnimFlag(true);
+    }, (6 + 1) * delayStep + letterSpeed);
   }, []);
 
   return (
