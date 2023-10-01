@@ -25,6 +25,15 @@ export default function TicketButton() {
         paddingRight: `${expansion * 128}px`,
         paddingLeft: `${expansion * 16}px`,
       }}
+      onMouseEnter={() => {
+        setExpansion(1);
+      }}
+      onMouseLeave={() => {
+        setExpansion(0);
+      }}
+      onClick={() => {
+        window.scrollBy({ top: document.body.offsetHeight * 2 });
+      }}
     >
       <MaterialIcon
         icon="confirmation_number"
@@ -32,9 +41,12 @@ export default function TicketButton() {
       />
       <p
         className={twMerge(
-          "mix-blend-difference whitespace-nowrap absolute left-16 opacity-0 duration-1000 w-0 overflow-hidden group-hover:opacity-100 group-hover:w-max"
+          "mix-blend-difference whitespace-nowrap absolute left-16 duration-1000 overflow-hidden"
         )}
-        style={{ opacity: expansion, width: `${expansion * 100}%` }}
+        style={{
+          opacity: expansion,
+          width: expansion < 0.66 ? `${expansion * 100}%` : "max-content",
+        }}
       >
         Get Tickets
       </p>

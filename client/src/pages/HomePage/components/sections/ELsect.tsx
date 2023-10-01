@@ -82,6 +82,7 @@ export default function ELsect() {
         muted
         loop
       />
+
       <div className="relative z-20 flex flex-col items-center my-20 gap-y-5">
         <h1
           className="cursor-default group w-2/3 py-8 self-end px-16 duration-500 [clip-path:polygon(5%_0%,100%_0%,100%_100%,0%_100%)] hover:[clip-path:polygon(0%_0%,100%_0%,100%_100%,5%_100%)]

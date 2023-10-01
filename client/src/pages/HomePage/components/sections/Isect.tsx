@@ -43,7 +43,7 @@ export default function Isect() {
       </div>
       <div className="absolute-cover flex flex-col pl-[20vw] items-center pointer-events-none mix-blend-exclusion">
         <h1 className="flex items-baseline text-5xl font-celestial">
-          <span className="font-celestialDecorative text-8xl font-black -translate-y-2">
+          <span className="font-celestialDecorative text-8xl -translate-y-2">
             I
           </span>
           <span className="ml-[0.2ch]">mmesion on a next level</span>

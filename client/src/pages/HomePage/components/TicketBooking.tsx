@@ -1,7 +1,8 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import useCoords from "../../../hooks/useCoords";
-import Spline from "@splinetool/react-spline";
+
+const Spline = React.lazy(() => import("@splinetool/react-spline"));
 
 export default function TicketBooking() {
   const [bgOpacity, setBgOpacity] = useState(0);
@@ -24,9 +25,15 @@ export default function TicketBooking() {
           "fixed left-0 top-0 w-full h-full duration-100",
           bgOpacity < -1 && "hidden"
         )}
-        style={{ opacity: 1 + bgOpacity }}
+        style={{
+          opacity: 1 + bgOpacity,
+          filter: `contrast(${bgOpacity}%)`,
+        }}
       >
-        <Spline scene="https://prod.spline.design/a2-CAxt6N0VsodLg/scene.splinecode" />
+        <Spline
+          scene="https://prod.spline.design/a2-CAxt6N0VsodLg/scene.splinecode"
+          className="-scale-x-100 -scale-y-100"
+        />
       </div>
     </section>
   );

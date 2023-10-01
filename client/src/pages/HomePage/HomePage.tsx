@@ -12,9 +12,6 @@ import Isect from "./components/sections/Isect";
 import Asect from "./components/sections/Asect";
 
 export default function HomePage() {
-  const [renderBody, setRenderBody] = useState(false);
-  const [showTicketing, setShowTicketing] = useState(false);
-
   useEffect(() => {
     const accentMapValuesFrom: number[] = [0];
     const accentMapValuesTo: number[][] = [
@@ -39,35 +36,31 @@ export default function HomePage() {
         "--accent",
         mapValueToColor(window.scrollY, accentMapValuesFrom, accentMapValuesTo)
       );
-      if (!showTicketing && window.scrollY > window.innerHeight * (2 / 3))
-        setShowTicketing(true);
     });
   }, []);
 
   return (
     <>
       <PersistentName />
-      <Hero setRenderBody={setRenderBody} />
-      {showTicketing && <TicketButton />}
+      <Hero />
+      <TicketButton />
 
-      {renderBody && (
-        <div className="overflow-hidden">
-          <div className="h-screen" />
-          <Csect />
-          <div className="h-screen" />
-          <ELsect />
-          <div className="h-screen" />
-          <Esect />
-          <div className="h-screen" />
-          <STsect />
-          <div className="h-screen" />
-          <Isect />
-          <div className="h-screen" />
-          <Asect />
-          <div className="h-screen bg-black" />
-          {showTicketing && <TicketBooking />}
-        </div>
-      )}
+      <div className="overflow-hidden">
+        <div className="h-screen" />
+        <Csect />
+        <div className="h-screen" />
+        <ELsect />
+        <div className="h-screen" />
+        <Esect />
+        <div className="h-screen" />
+        <STsect />
+        <div className="h-screen" />
+        <Isect />
+        <div className="h-screen" />
+        <Asect />
+        <div className="h-screen bg-black" />
+        <TicketBooking />
+      </div>
     </>
   );
 }
