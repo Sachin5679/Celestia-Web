@@ -27,7 +27,9 @@ export default function TicketBooking() {
         )}
         style={{
           opacity: 1 + bgOpacity,
-          filter: `contrast(${bgOpacity}%)`,
+          filter: `contrast(${(1 - bgOpacity) * 100}%) saturate(${
+            (2 - bgOpacity) * 100
+          }%)`,
         }}
       >
         <Spline
